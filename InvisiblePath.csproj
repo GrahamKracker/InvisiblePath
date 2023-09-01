@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>InvisiblePath</RootNamespace>
+        <Configurations>Debug;Release</Configurations>
+        <Nullable>enable</Nullable>
+        <AssemblyName>InvisiblePath</AssemblyName>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <Optimize>false</Optimize>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <Optimize>true</Optimize>
+        <DebugType>none</DebugType>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include=".github\workflows\build.yml" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="AssetBundles\" />
+      <Folder Include="Assets\" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="areas.txt" />
+      <EmbeddedResource Include="areas.txt" />
+      <None Remove="paths.txt" />
+      <EmbeddedResource Include="paths.txt" />
+    </ItemGroup>
+    <Import Project="..\btd6.targets" />
+</Project>
